@@ -20,21 +20,28 @@ const stageThree = document.querySelector(".stage-three");
 //     ancientCards[i].classList.toggle("active");
 //   });
 // }
+
 azathoth.addEventListener("click", () => {
   azathoth.classList.add("active-ancient");
   difficulty.classList.remove("hidden");
 });
 
-difficulty.addEventListener("click", () => {
-  difficulty.classList.add("active");
-  goDeck.classList.remove("hidden");
-});
+difficulty.addEventListener(
+  "click",
+  () => {
+    difficulty.classList.add("active");
+    goDeck.classList.remove("hidden");
+  },
+  { once: true }
+);
 
 goDeck.addEventListener("click", () => {
   stageContainer.classList.remove("hidden");
   deckContainer.classList.remove("hidden");
   goDeck.classList.add("hidden");
 });
+
+console.log(goDeck.classList[1]);
 
 let allBlue = 12;
 let allGreen = 18;
@@ -84,7 +91,6 @@ const brownCardsCounter =
 
 const allCardsCounter =
   blueCardsCounter + greenCardsCounter + brownCardsCounter;
-console.log("all cards =", allCardsCounter);
 const deck = document.querySelector(".current-card");
 
 // function addBlueCards() {
@@ -133,7 +139,7 @@ for (let i = 0; i < brownCardsCounter; i++) {
   brownDeck.push(`./assets/MythicCards/brown/brown${currentElement}.png`);
   allBrownArray.splice(index, 1);
 }
-console.log(greenDeck);
+
 // if (ancientsData[0].firstStage.blueCards === 0) {
 //   if (ancientsData[0].firstStage.blueCards === 0) {
 //     thirdStageCards.green.push({
@@ -204,7 +210,6 @@ for (let i = 0; blueDeck.length >= i; i++) {
     thirdStageCounterGreen = thirdStageCounterGreen + 1;
   }
 }
-console.log("start deck", brownDeck.length);
 for (let i = 0; brownDeck.length > i; i++) {
   if (ancientsData[0].firstStage.brownCards >= 1) {
     firstStageCards.push(brownDeck[0]);
@@ -359,7 +364,6 @@ function goThirdStage() {
   numThird = numThird + 1;
   console.log("Third next card", secondStageCards[numSecond]);
 }
-console.log(secondStageCards);
 
 const deckClick = document.querySelector(".deck-img");
 deckClick.addEventListener("click", () => {

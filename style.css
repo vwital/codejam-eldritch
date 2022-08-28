@@ -74,6 +74,7 @@ body {
 }
 .visible {
   opacity: 1;
+  visibility: visible;
 }
 
 .game-container {
@@ -119,6 +120,7 @@ body {
 .deck {
   width: 130px;
   height: 190px;
+  cursor: pointer;
 }
 .current-card {
   background-size: cover;
