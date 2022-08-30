@@ -1,25 +1,12 @@
 import ancientsData from "./data/ancients.js";
 const difficulty = document.querySelector(".difficalty-item");
-const azathoth = document.querySelector(".ancient-one");
+const azathoth = document.querySelector(".ancient-img");
 const stageContainer = document.querySelector(".stage-container");
 const deckContainer = document.querySelector(".deck");
 const goDeck = document.querySelector(".go-deck ");
 const stageOne = document.querySelector(".stage-one");
 const stageTwo = document.querySelector(".stage-two");
 const stageThree = document.querySelector(".stage-three");
-// const cthulhu = document.querySelector(".ancient-two");
-// const iogSothoth = document.querySelector(".anciet-three");
-// const shubNiggurath = document.querySelector(".ancient-four");
-
-// const ancientCards = document.querySelectorAll(".ancient-card ");
-// for (let i = 0; i < ancientCards.length; i++) {
-//   ancientCards[i].addEventListener("click", () => {
-//     if (ancientCards[i].contains("active")) {
-//       ancientCards[i].classList.remove("active");
-//     }
-//     ancientCards[i].classList.toggle("active");
-//   });
-// }
 
 azathoth.addEventListener("click", () => {
   azathoth.classList.add("active-ancient");
@@ -40,8 +27,6 @@ goDeck.addEventListener("click", () => {
   deckContainer.classList.remove("hidden");
   goDeck.classList.add("hidden");
 });
-
-console.log(goDeck.classList[1]);
 
 let allBlue = 12;
 let allGreen = 18;
@@ -93,21 +78,6 @@ const allCardsCounter =
   blueCardsCounter + greenCardsCounter + brownCardsCounter;
 const deck = document.querySelector(".current-card");
 
-// function addBlueCards() {
-//   const img = new Image();
-//   getRandomNum(allBlue);
-//   img.src = `./assets/MythicCards/blue/blue${randomNum}.png`;
-//   img.onload = () => {
-//     deck.style.backgroundImage = `url(./assets/MythicCards/blue/blue${randomNum}.png)`;
-//   };
-// }
-
-// const goDeck = document.querySelector(".go-deck");
-// goDeck.addEventListener("click", () => {
-//   addBlueCards();
-//   console.log(randomNum);
-// });
-
 for (let i = 0; i < greenCardsCounter; i++) {
   let index;
   let currentElement;
@@ -140,30 +110,6 @@ for (let i = 0; i < brownCardsCounter; i++) {
   allBrownArray.splice(index, 1);
 }
 
-// if (ancientsData[0].firstStage.blueCards === 0) {
-//   if (ancientsData[0].firstStage.blueCards === 0) {
-//     thirdStageCards.green.push({
-//       url: `url(./assets/MythicCards/green/green${currentElement}.png)`,
-//       class: "green",
-//       number: i + 1,
-//     });
-//   }
-//   secondStageCards.green.push({
-//     url: `url(./assets/MythicCards/green/green${currentElement}.png)`,
-//     class: "green",
-//     number: i + 1,
-//   });
-//   ancientsData[0].secnodStage.blueCards =
-//     ancientsData[0].secondStage.greenCards;
-// }
-// firstStageCards.green.push({
-//   url: `url(./assets/MythicCards/green/green${currentElement}.png)`,
-//   class: "green",
-//   number: i + 1,
-// });
-// ancientsData[0].firstStage.greenCards =
-//   ancientsData[0].firstStage.greenCards - 1;
-// allGreenArray.splice(index, 1);
 for (let i = 0; greenDeck.length > i; i++) {
   if (ancientsData[0].firstStage.greenCards >= 1) {
     firstStageCards.push(greenDeck[0]);
@@ -276,6 +222,7 @@ function showFirstStageCards(num) {
   img.onload = () => {
     deck.style.backgroundImage = `url(${firstStageCards[num]}`;
   };
+  console.log("current card url:", firstStageCards[num]);
 }
 function showSecondStageCards(num) {
   const img = new Image();
@@ -283,6 +230,7 @@ function showSecondStageCards(num) {
   img.onload = () => {
     deck.style.backgroundImage = `url(${secondStageCards[num]}`;
   };
+  console.log("current card url:", secondStageCards[num]);
 }
 function showThirdStageCards(num) {
   const img = new Image();
@@ -290,6 +238,7 @@ function showThirdStageCards(num) {
   img.onload = () => {
     deck.style.backgroundImage = `url(${thirdStageCards[num]}`;
   };
+  console.log("current card url:", thirdStageCards[num]);
 }
 
 function compareFirstColor() {
@@ -348,21 +297,18 @@ function goFirstStage() {
   showFirstStageCards(numFirst);
   compareFirstColor();
   numFirst = numFirst + 1;
-  console.log("FIRST next card", firstStageCards[numFirst]);
 }
 
 function goSecondStage() {
   showSecondStageCards(numSecond);
   compareSecondColor();
   numSecond = numSecond + 1;
-  console.log("SECOND next card", secondStageCards[numSecond]);
 }
 
 function goThirdStage() {
   showThirdStageCards(numThird);
   compareThirdColor();
   numThird = numThird + 1;
-  console.log("Third next card", secondStageCards[numSecond]);
 }
 
 const deckClick = document.querySelector(".deck-img");
@@ -382,7 +328,6 @@ deckClick.addEventListener("click", () => {
     numThird === thirdStageCards.length - 1
   ) {
     deckClick.classList.add("hidden");
-    console.log("END!!!");
   }
   if (
     secondStageCards[numSecond] === undefined &&
@@ -400,9 +345,3 @@ deckClick.addEventListener("click", () => {
     goFirstStage();
   }
 });
-
-if (deck.style.backgroundImage === "undefined") {
-  console.log("END URL");
-}
-// console.log((deck.style.backgroundImage = firstStageCards[0].green[0].url));
-// console.log(firstStageCards[0].green[0].url);
